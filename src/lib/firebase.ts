@@ -15,7 +15,8 @@ const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 
 // Using initializeFirestore for a more stable connection
 export const db = initializeFirestore(app, {
-  experimentalForceLongPolling: true, // This can help with region-specific connection issues
+  experimentalForceLongPolling: true,
+  ignoreUndefinedProperties: true, // This prevents errors when some fields are undefined
 });
 
 export const auth = getAuth(app);

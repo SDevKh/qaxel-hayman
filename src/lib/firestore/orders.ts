@@ -3,10 +3,20 @@ import { db } from '../firebase';
 import type { OrderDoc, PaymentDoc } from './types';
 
 export async function createOrder(params: OrderDoc) {
-  const orderId = (globalThis as any).crypto?.randomUUID?.() ?? `order_${Date.now()}`;
-  const orderRef = doc(db, 'orders', orderId);
-  await setDoc(orderRef, params);
-  return orderId;
+  try {
+    const orderId = (globalThis as any).crypto?.randomUUID?.() ?? `order_${Date.now()}`;
+    const orderRef = doc(db, 'orders', orderId);
+    
+    console.log('Attempting to create order in Firestore:', orderId, params);
+    
+    await setDoc(orderRef, params);
+    
+    console.log('Order successfully created in Firestore:', orderId);
+    return orderId;
+  } catch (error) {
+    console.error('CRITICAL: Firestore order creation failed:', error);
+    throw error;
+  }
 }
 
 export async function createPayment(params: PaymentDoc) {
