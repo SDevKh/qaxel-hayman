@@ -98,7 +98,7 @@ const Account: React.FC = () => {
                         <p className="order-date">{new Date(order.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
                       </div>
                       <div style={{ textAlign: 'right' }}>
-                        <p className="order-total">${order.subtotal.toFixed(2)}</p>
+                        <p className="order-total">Rs.{order.subtotal.toFixed(2)}</p>
                         <span className="order-status" style={{ 
                           color: order.status === 'paid' ? '#166534' : '#991b1b',
                           background: order.status === 'paid' ? '#f0fdf4' : '#fef2f2'

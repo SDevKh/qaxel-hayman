@@ -13,8 +13,8 @@ export default function Shipping() {
       <section className="legal-section">
         <h2 className="legal-h2">Domestic Shipping</h2>
         <p className="legal-p">
-          We offer free standard shipping on all domestic orders over $150. For orders under $150,
-          a flat rate of $10 applies. Standard delivery typically takes 3-5 business days.
+          We offer free standard shipping on all domestic orders over Rs.500. For orders under Rs.500,
+          a flat rate of Rs.70 applies. Standard delivery typically takes 3-5 business days.
         </p>
       </section>
 

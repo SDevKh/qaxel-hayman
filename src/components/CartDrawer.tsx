@@ -35,14 +35,14 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
                   <div className="cart-item-info">
                     <div>
                       <p className="cart-item-name">{item.name}</p>
-                      <p className="cart-item-price">${item.price.toFixed(2)}</p>
+                      <p className="cart-item-price">Rs.{item.price.toFixed(2)}</p>
                     </div>
                     <div className="qty-controls">
                       <button onClick={() => dispatch(updateQuantity({ id: item.id, quantity: Math.max(1, item.quantity - 1) }))}>−</button>
                       <span>{item.quantity}</span>
                       <button onClick={() => dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }))}>+</button>
-                      <button 
-                        style={{ marginLeft: 'auto', border: 'none', textDecoration: 'underline', fontSize: '0.7rem', color: 'var(--text-muted)' }} 
+                      <button
+                        style={{ marginLeft: 'auto', border: 'none', textDecoration: 'underline', fontSize: '0.7rem', color: 'var(--text-muted)' }}
                         onClick={() => dispatch(removeFromCart(item.id))}
                       >
                         Remove
@@ -55,12 +55,12 @@ export default function CartDrawer({ open, onClose }: CartDrawerProps) {
             <div className="cart-footer">
               <div className="cart-total">
                 <span>Subtotal</span>
-                <span>${total.toFixed(2)}</span>
+                <span>Rs.{total.toFixed(2)}</span>
               </div>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>Shipping and taxes calculated at checkout.</p>
               <Link to="/checkout" className="checkout-btn" onClick={onClose}>Checkout</Link>
-              <button 
-                className="clear-btn" 
+              <button
+                className="clear-btn"
                 style={{ marginTop: '1rem', width: '100%', border: 'none' }}
                 onClick={() => dispatch(clearCart())}
               >

@@ -11,12 +11,21 @@ export default function ProductCard({ product }: { product: Product }) {
       <div className="product-img-wrap">
         {product.badge && <span className="product-badge">{product.badge}</span>}
         <Link to={`/product/${product.id}`}>
-          <img src={product.image} alt={product.name} className="product-img" />
+          <img
+            src={Array.isArray(product.image) ? product.image[0] : product.image}
+            alt={product.name}
+            className="product-img"
+          />
         </Link>
         <div className="product-actions">
           <button
             className="quick-add-btn"
-            onClick={() => dispatch(addToCart({ id: product.id, name: product.name, price: product.price, image: product.image }))}
+            onClick={() => dispatch(addToCart({
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              image: Array.isArray(product.image) ? product.image[0] : product.image
+            }))}
           >
             Add to Bag
           </button>
@@ -27,7 +36,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <Link to={`/product/${product.id}`}>
           <h3 className="product-name">{product.name}</h3>
         </Link>
-        <span className="product-price">${product.price.toFixed(2)}</span>
+        <span className="product-price">Rs.{product.price.toFixed(2)}</span>
       </div>
     </div>
   );
