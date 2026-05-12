@@ -13,6 +13,8 @@ export interface OrderDoc {
   userFullName?: string;
   items: OrderItem[];
   subtotal: number;
+  shippingFee: number;
+  total: number;
   shippingAddress: {
     email: string;
     fullName: string;
@@ -21,6 +23,7 @@ export interface OrderDoc {
     country: string;
   };
   status: OrderStatus;
+  paymentId?: string;
   createdAt: number; // epoch millis
 }
 
