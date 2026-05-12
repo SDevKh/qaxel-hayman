@@ -30,14 +30,14 @@ export default function Terms() {
         <h2 className="legal-h2">3. Intellectual Property</h2>
         <p className="legal-p">
           All content on this site, including text, graphics, logos, and images, is the property
-          of QAXEL and is protected by international copyright laws.
+          of STYLEDORA and is protected by international copyright laws.
         </p>
       </section>
 
       <section className="legal-section">
         <h2 className="legal-h2">4. Limitation of Liability</h2>
         <p className="legal-p">
-          QAXEL shall not be liable for any direct, indirect, incidental, or consequential damages
+          STYLEDORA shall not be liable for any direct, indirect, incidental, or consequential damages
           resulting from the use or inability to use our services.
         </p>
       </section>

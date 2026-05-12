@@ -3,7 +3,7 @@ export default function About() {
     <div className="about-page">
       <h1 className="serif" style={{ fontSize: '4rem', marginBottom: '2rem' }}>The Brand</h1>
       <p style={{ maxWidth: '800px', margin: '0 auto 4rem', fontSize: '1.2rem', color: 'var(--text-muted)' }}>
-        QAXEL was founded on the principles of simplicity, quality, and timeless design.
+        STYLEDORA was founded on the principles of simplicity, quality, and timeless design.
         We believe that a wardrobe should be composed of well-crafted pieces that transcend seasons.
       </p>
 

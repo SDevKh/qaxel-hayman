@@ -67,7 +67,7 @@ export default function Signup() {
             <div className="auth-card">
                 <div className="auth-header">
                     <h2 className="auth-title serif">Create Account</h2>
-                    <p className="auth-subtitle">Join the QAXEL collection</p>
+                    <p className="auth-subtitle">Join the STYLEDORA collection</p>
                 </div>
 
                 {serverError && (

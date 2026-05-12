@@ -13,7 +13,7 @@ export default function Privacy() {
       <section className="legal-section">
         <h2 className="legal-h2">1. Overview</h2>
         <p className="legal-p">
-          This privacy policy explains how QAXEL (“we”, “us”) handles information collected through
+          This privacy policy explains how STYLEDORA (“we”, “us”) handles information collected through
           this website. This is a demo UI page—no data is actually collected or transmitted.
         </p>
       </section>
@@ -38,7 +38,7 @@ export default function Privacy() {
         <h2 className="legal-h2">4. Contact</h2>
         <p className="legal-p">
           If you have questions about this policy, contact us at{' '}
-          <span className="legal-strong">support@QAXEL.example</span>.
+          <span className="legal-strong">support@STYLEDORA.example</span>.
         </p>
       </section>
 

@@ -21,7 +21,7 @@ export default function Shipping() {
       <section className="legal-section">
         <h2 className="legal-h2">International Shipping</h2>
         <p className="legal-p">
-          QAXEL ships worldwide. International shipping rates are calculated at checkout based
+          STYLEDORA ships worldwide. International shipping rates are calculated at checkout based
           on your location and order weight. Delivery times vary by destination but generally
           take 7-14 business days.
         </p>

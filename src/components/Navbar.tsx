@@ -31,7 +31,7 @@ export default function Navbar({ onCartOpen }: NavbarProps) {
         </button>
 
         <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          QAXEL
+          STYLEDORA
         </Link>
 
         <div className="navbar-links">

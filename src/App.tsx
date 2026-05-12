@@ -45,7 +45,7 @@ function AppLayout() {
   if (!isInitialized) {
     return (
       <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)' }}>
-        <div className="serif" style={{ fontSize: '1.5rem', letterSpacing: '0.2em' }}>QAXEL</div>
+        <div className="serif" style={{ fontSize: '1.5rem', letterSpacing: '0.2em' }}>STYLEDORA</div>
       </div>
     );
   }
@@ -73,7 +73,7 @@ function AppLayout() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
-            <span className="footer-logo">QAXEL</span>
+            <span className="footer-logo">STYLEDORA</span>
             <p style={{ marginTop: '1rem', color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.8' }}>
               Crafting timeless essentials for the modern wardrobe. Quality, sustainability, and minimalist design at the core of everything we do.
             </p>
@@ -108,7 +108,7 @@ function AppLayout() {
         </div>
 
         <div className="footer-bottom">
-          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>© 2026 QAXEL — All Rights Reserved.</p>
+          <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>© 2026 STYLEDORA — All Rights Reserved.</p>
         </div>
       </footer>
 

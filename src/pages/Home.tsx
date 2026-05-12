@@ -17,7 +17,7 @@ export default function Home() {
       {/* Hero */}
       <section className="hero">
         <div className="hero-img-container">
-          <img src="/hero.png" alt="QAXEL Collection" />
+          <img src="/hero.png" alt="STYLEDORA Collection" />
         </div>
         <div className="hero-content">
           <p className="hero-sub">The New Standard</p>
