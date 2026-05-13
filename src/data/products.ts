@@ -38,7 +38,7 @@ export const products: Product[] = [
   {
     id: 3,
     name: 'Demon Slayer Jacket',
-    price: 1599.00,
+    price: 1.00,
     image: [
       '/Demon Slayer Jacket.jpg'
     ],
