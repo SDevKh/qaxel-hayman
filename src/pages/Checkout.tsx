@@ -35,66 +35,78 @@ export default function Checkout() {
   const total = subtotal + shipping;
 
   const handlePayment = async () => {
+    console.log('handlePayment triggered');
     if (!email || !fullName || !address || !city || !country) {
       alert('Please fill in all shipping details.');
       return;
     }
 
     if (!window.Razorpay) {
-      alert('Razorpay SDK failed to load. Please check your connection.');
+      alert('Razorpay SDK failed to load. Please check your connection or disable ad-blockers.');
       return;
     }
 
     setIsLoading(true);
 
-    const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-      amount: Math.round(total * 100), // Using total (subtotal + shipping)
-      currency: 'INR',
-      name: 'STYLEDORA',
-      description: 'Order Payment',
-      image: '/favicon.png',
-      handler: async (response: any) => {
-        try {
-          const orderId = await createOrder({
-            userEmail: email,
-            userFullName: fullName,
-            items: items,
-            subtotal: subtotal,
-            shippingFee: shipping,
-            total: total,
-            shippingAddress: { email, fullName, address, city, country },
-            status: 'paid',
-            paymentId: response.razorpay_payment_id,
-            createdAt: Date.now(),
-          });
+    try {
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+        amount: Math.round(total * 100),
+        currency: 'INR',
+        name: 'STYLEDORA',
+        description: 'Order Payment',
+        image: '/favicon.png',
+        handler: async (response: any) => {
+          console.log('Razorpay payment successful, response:', response);
+          try {
+            console.log('Calling createOrder with items:', items);
+            const orderId = await createOrder({
+              userEmail: email,
+              userFullName: fullName,
+              items: items,
+              subtotal: subtotal,
+              shippingFee: shipping,
+              total: total,
+              shippingAddress: { email, fullName, address, city, country },
+              status: 'paid',
+              paymentId: response.razorpay_payment_id,
+              createdAt: Date.now(),
+            });
 
-          dispatch(clearCart());
-          alert(`Payment Successful! Order #${orderId} placed.`);
-          navigate('/account');
-        } catch (err: any) {
-          console.error('Order creation failed:', err);
-          alert('Payment was successful but order creation failed. Please contact support.');
-        } finally {
-          setIsLoading(false);
+            console.log('Order created successfully, ID:', orderId);
+            dispatch(clearCart());
+            alert(`Payment Successful! Order #${orderId} placed.`);
+            navigate('/account');
+          } catch (err: any) {
+            console.error('CRITICAL: Order creation failed after payment:', err);
+            alert('Payment was successful but order creation failed. Please contact support with your Payment ID: ' + response.razorpay_payment_id);
+          } finally {
+            setIsLoading(false);
+          }
+        },
+        prefill: {
+          name: fullName,
+          email: email,
+        },
+        theme: {
+          color: '#1a1a1a',
+        },
+        modal: {
+          ondismiss: () => {
+            console.log('Razorpay modal dismissed');
+            setIsLoading(false);
+          }
         }
-      },
-      prefill: {
-        name: fullName,
-        email: email,
-      },
-      theme: {
-        color: '#1a1a1a',
-      },
-      modal: {
-        ondismiss: () => {
-          setIsLoading(false);
-        }
-      }
-    };
+      };
 
-    const rzp = new window.Razorpay(options);
-    rzp.open();
+      console.log('Opening Razorpay modal with options:', { ...options, key: 'HIDDEN' });
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (err) {
+      console.error('Failed to initialize Razorpay:', err);
+      alert('Failed to initialize payment. Please try again.');
+      setIsLoading(false);
+    }
   };
 
   if (items.length === 0) {

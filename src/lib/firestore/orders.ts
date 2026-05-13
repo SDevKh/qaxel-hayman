@@ -7,14 +7,22 @@ export async function createOrder(params: OrderDoc) {
     const orderId = (globalThis as any).crypto?.randomUUID?.() ?? `order_${Date.now()}`;
     const orderRef = doc(db, 'orders', orderId);
     
-    console.log('Attempting to create order in Firestore:', orderId, params);
+    // Sanitize data for Firestore (ensure plain objects and no undefined)
+    const sanitizedParams = JSON.parse(JSON.stringify(params));
     
-    await setDoc(orderRef, params);
+    console.log('Attempting to create order in Firestore:', orderId, sanitizedParams);
+    
+    await setDoc(orderRef, sanitizedParams);
     
     console.log('Order successfully created in Firestore:', orderId);
     return orderId;
   } catch (error) {
     console.error('CRITICAL: Firestore order creation failed:', error);
+    // Log the actual error message to help debugging
+    if (error instanceof Error) {
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    }
     throw error;
   }
 }
