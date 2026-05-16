@@ -1,5 +1,5 @@
 import { initializeApp, getApps } from 'firebase/app';
-import { initializeFirestore } from 'firebase/firestore';
+import { getFirestore, initializeFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -13,10 +13,17 @@ const firebaseConfig = {
 
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 
-// Using initializeFirestore for a more stable connection
-export const db = initializeFirestore(app, {
-  experimentalForceLongPolling: true,
-  ignoreUndefinedProperties: true, // This prevents errors when some fields are undefined
-});
+// Use long polling when Firestore is first created, but fall back during dev HMR
+// if an existing Firestore instance has already been initialized.
+export const db = (() => {
+  try {
+    return initializeFirestore(app, {
+      experimentalForceLongPolling: true,
+      ignoreUndefinedProperties: true,
+    });
+  } catch {
+    return getFirestore(app);
+  }
+})();
 
 export const auth = getAuth(app);

@@ -3,12 +3,39 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../store/store';
 import { clearCart } from '../store/cartSlice';
-import { createOrder } from '../lib/firestore/orders';
+import { createOrder, updateOrderStatus } from '../lib/firestore/orders';
 
 declare global {
   interface Window {
-    Razorpay: any;
+    Razorpay?: new (options: RazorpayOptions) => { open: () => void };
   }
+}
+
+interface RazorpayCheckoutResponse {
+  razorpay_payment_id: string;
+}
+
+interface RazorpayOptions {
+  key: string;
+  amount: number;
+  currency: string;
+  name: string;
+  description: string;
+  image: string;
+  handler: (response: RazorpayCheckoutResponse) => Promise<void>;
+  prefill: {
+    name: string;
+    email: string;
+  };
+  notes: {
+    orderId: string;
+  };
+  theme: {
+    color: string;
+  };
+  modal: {
+    ondismiss: () => void;
+  };
 }
 
 export default function Checkout() {
@@ -41,43 +68,48 @@ export default function Checkout() {
       return;
     }
 
-    if (!window.Razorpay) {
-      alert('Razorpay SDK failed to load. Please check your connection or disable ad-blockers.');
-      return;
-    }
-
     setIsLoading(true);
 
     try {
-      const options = {
+      const orderId = await createOrder({
+        userEmail: email,
+        userFullName: fullName,
+        items: items,
+        subtotal: subtotal,
+        shippingFee: shipping,
+        total: total,
+        shippingAddress: { email, fullName, address, city, country },
+        status: 'created',
+        createdAt: Date.now(),
+      });
+
+      if (!window.Razorpay) {
+        alert(`Order #${orderId} was saved, but Razorpay failed to load. Please contact support to complete payment.`);
+        setIsLoading(false);
+        navigate('/account');
+        return;
+      }
+
+      const options: RazorpayOptions = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
         amount: Math.round(total * 100),
         currency: 'INR',
         name: 'STYLEDORA',
         description: 'Order Payment',
         image: '/favicon.png',
-        handler: async (response: any) => {
+        handler: async (response) => {
           console.log('Razorpay payment successful, response:', response);
           try {
-            console.log('Calling createOrder with items:', items);
-            const orderId = await createOrder({
-              userEmail: email,
-              userFullName: fullName,
-              items: items,
-              subtotal: subtotal,
-              shippingFee: shipping,
-              total: total,
-              shippingAddress: { email, fullName, address, city, country },
+            await updateOrderStatus(orderId, {
               status: 'paid',
               paymentId: response.razorpay_payment_id,
-              createdAt: Date.now(),
             });
 
-            console.log('Order created successfully, ID:', orderId);
+            console.log('Order marked paid successfully, ID:', orderId);
             dispatch(clearCart());
             alert(`Payment Successful! Order #${orderId} placed.`);
             navigate('/account');
-          } catch (err: any) {
+          } catch (err) {
             console.error('CRITICAL: Order creation failed after payment:', err);
             alert('Payment was successful but order creation failed. Please contact support with your Payment ID: ' + response.razorpay_payment_id);
           } finally {
@@ -88,18 +120,22 @@ export default function Checkout() {
           name: fullName,
           email: email,
         },
+        notes: {
+          orderId,
+        },
         theme: {
           color: '#1a1a1a',
         },
         modal: {
           ondismiss: () => {
             console.log('Razorpay modal dismissed');
+            alert(`Order #${orderId} was saved. You can retry payment from support.`);
             setIsLoading(false);
           }
         }
       };
 
-      console.log('Opening Razorpay modal with options:', { ...options, key: 'HIDDEN' });
+      console.log('Opening Razorpay modal for saved order:', orderId);
       const rzp = new window.Razorpay(options);
       rzp.open();
     } catch (err) {
@@ -187,13 +223,17 @@ export default function Checkout() {
           <div className="checkout-form-actions">
             <Link to="/shipping" className="checkout-link">Shipping & Returns</Link>
 
-            <button
-              className="checkout-pay-btn"
-              disabled={isLoading}
-              onClick={handlePayment}
-            >
-              {isLoading ? 'Processing...' : 'Pay Now'}
-            </button>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
+              <button
+                className="checkout-pay-btn"
+                disabled={isLoading}
+                onClick={handlePayment}
+              >
+                {isLoading ? 'Processing...' : 'Pay Now'}
+              </button>
+
+              
+            </div>
           </div>
         </section>
 
