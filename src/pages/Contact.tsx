@@ -71,8 +71,8 @@ export default function Contact() {
         <aside className="contact-card">
           <h2 className="contact-card__title">Store Info</h2>
           <div className="contact-card__row">
-            <span className="contact-card__k">Email</span>
-            <span className="contact-card__v">support@STYLEDORA.example</span>
+            <span className="contact-card__k">Contact</span>
+            <span className="contact-card__v">+91 6350455133</span>
           </div>
           <div className="contact-card__row">
             <span className="contact-card__k">Hours</span>
