@@ -92,7 +92,8 @@ export const products: Product[] = [
     name: 'Pirated One Piece Oversized Tshirt',
     price: 899.00,
     image: [
-      '/Pirated One Piece Oversized Tshirt.jpg'
+      '/Pirated One Piece Oversized Tshirt.jpg',
+      '/frontlufi.png'
     ],
     category: 'Unisex',
     description: 'Comfortable wide-leg trousers made from a recycled polyester blend.',
