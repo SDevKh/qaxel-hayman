@@ -6,6 +6,21 @@ import { logout } from '../store/authSlice';
 import { getUserOrders } from '../lib/firestore/orders';
 import type { OrderDoc } from '../lib/firestore/types';
 
+const getStatusDetails = (status: string) => {
+  switch (status) {
+    case 'paid':
+      return { label: 'Paid', color: '#166534', bg: '#f0fdf4' };
+    case 'cod_pending':
+      return { label: 'COD - Pending', color: '#b45309', bg: '#fef3c7' };
+    case 'created':
+      return { label: 'Created', color: '#1e40af', bg: '#dbeafe' };
+    case 'failed':
+      return { label: 'Failed', color: '#991b1b', bg: '#fef2f2' };
+    default:
+      return { label: status, color: '#1f2937', bg: '#f3f4f6' };
+  }
+};
+
 const Account: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -100,9 +115,9 @@ const Account: React.FC = () => {
                       <div style={{ textAlign: 'right' }}>
                         <p className="order-total">Rs.{order.subtotal.toFixed(2)}</p>
                         <span className="order-status" style={{ 
-                          color: order.status === 'paid' ? '#166534' : '#991b1b',
-                          background: order.status === 'paid' ? '#f0fdf4' : '#fef2f2'
-                        }}>{order.status}</span>
+                          color: getStatusDetails(order.status).color,
+                          background: getStatusDetails(order.status).bg
+                        }}>{getStatusDetails(order.status).label}</span>
                       </div>
                     </div>
                     <div className="order-items-preview">

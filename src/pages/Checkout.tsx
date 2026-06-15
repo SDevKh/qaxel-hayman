@@ -50,6 +50,7 @@ export default function Checkout() {
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState<'online' | 'cod'>('online');
 
   useEffect(() => {
     if (isInitialized && !isAuthenticated) {
@@ -79,9 +80,18 @@ export default function Checkout() {
         shippingFee: shipping,
         total: total,
         shippingAddress: { email, fullName, address, city, country },
-        status: 'created',
+        status: paymentMethod === 'cod' ? 'cod_pending' : 'created',
+        paymentMethod: paymentMethod,
         createdAt: Date.now(),
       });
+
+      if (paymentMethod === 'cod') {
+        dispatch(clearCart());
+        alert(`Order #${orderId} has been successfully placed using Cash on Delivery!`);
+        setIsLoading(false);
+        navigate('/account');
+        return;
+      }
 
       if (!window.Razorpay) {
         alert(`Order #${orderId} was saved, but Razorpay failed to load. Please contact support to complete payment.`);
@@ -218,9 +228,77 @@ export default function Checkout() {
                 />
               </div>
             </div>
+            
+            {/* Payment Method Selector */}
+            <div style={{ marginTop: '2.5rem', borderTop: '1px solid var(--border)', paddingTop: '2rem' }}>
+              <h3 className="serif" style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Payment Method</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1.25rem' }}>
+                <div 
+                  className={`payment-method-card ${paymentMethod === 'online' ? 'selected' : ''}`}
+                  onClick={() => setPaymentMethod('online')}
+                  style={{
+                    border: paymentMethod === 'online' ? '2px solid var(--accent)' : '1px solid var(--border)',
+                    padding: '1.25rem',
+                    borderRadius: 'var(--radius-sm)',
+                    cursor: 'pointer',
+                    transition: 'var(--transition)',
+                    backgroundColor: paymentMethod === 'online' ? '#fff' : 'transparent',
+                    boxShadow: paymentMethod === 'online' ? 'var(--shadow-soft)' : 'none',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+                    <div style={{
+                      width: '18px',
+                      height: '18px',
+                      borderRadius: '50%',
+                      border: '2px solid var(--accent)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: paymentMethod === 'online' ? 'var(--accent)' : 'transparent',
+                    }}>
+                      {paymentMethod === 'online' && <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#fff' }} />}
+                    </div>
+                    <span style={{ fontWeight: 600, fontSize: '0.8rem', letterSpacing: '0.1em' }}>ONLINE PAYMENT</span>
+                  </div>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Pay securely with Cards, UPI, or NetBanking.</p>
+                </div>
+
+                <div 
+                  className={`payment-method-card ${paymentMethod === 'cod' ? 'selected' : ''}`}
+                  onClick={() => setPaymentMethod('cod')}
+                  style={{
+                    border: paymentMethod === 'cod' ? '2px solid var(--accent)' : '1px solid var(--border)',
+                    padding: '1.25rem',
+                    borderRadius: 'var(--radius-sm)',
+                    cursor: 'pointer',
+                    transition: 'var(--transition)',
+                    backgroundColor: paymentMethod === 'cod' ? '#fff' : 'transparent',
+                    boxShadow: paymentMethod === 'cod' ? 'var(--shadow-soft)' : 'none',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+                    <div style={{
+                      width: '18px',
+                      height: '18px',
+                      borderRadius: '50%',
+                      border: '2px solid var(--accent)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      background: paymentMethod === 'cod' ? 'var(--accent)' : 'transparent',
+                    }}>
+                      {paymentMethod === 'cod' && <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#fff' }} />}
+                    </div>
+                    <span style={{ fontWeight: 600, fontSize: '0.8rem', letterSpacing: '0.1em' }}>CASH ON DELIVERY</span>
+                  </div>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Pay in cash when your order is delivered.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="checkout-form-actions">
+          <div className="checkout-form-actions" style={{ marginTop: '2.5rem' }}>
             <Link to="/shipping" className="checkout-link">Shipping & Returns</Link>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
@@ -229,10 +307,8 @@ export default function Checkout() {
                 disabled={isLoading}
                 onClick={handlePayment}
               >
-                {isLoading ? 'Processing...' : 'Pay Now'}
+                {isLoading ? 'Processing...' : paymentMethod === 'cod' ? 'Place Order (COD)' : 'Pay Now'}
               </button>
-
-              
             </div>
           </div>
         </section>

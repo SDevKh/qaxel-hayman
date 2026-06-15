@@ -1,5 +1,6 @@
 export interface Product {
   id: number;
+  tone: string;
   name: string;
   price: number;
   image: string | string[];
@@ -11,6 +12,7 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 1,
+    tone: 'Energetic',
     name: 'Goku Anime Tshirt',
     price: 890.00,
     image: [
@@ -26,6 +28,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
+    tone: 'Playful',
     name: 'Anime Girls overszied T-shirt',
     price: 590.00,
     image: [
@@ -37,6 +40,7 @@ export const products: Product[] = [
   },
   {
     id: 3,
+    tone: 'Mysterious',
     name: 'Demon Slayer Jacket',
     price: 1499.00,
     image: [
@@ -48,6 +52,7 @@ export const products: Product[] = [
   },
   {
     id: 4,
+    tone: 'Playful',
     name: 'Girl Oversized Tshirt',
     price: 599.00,
     image: [
@@ -59,7 +64,8 @@ export const products: Product[] = [
   },
   {
     id: 5,
-    name: 'Girls Ovewrsized Tshirt',
+    tone: 'Playful',
+    name: 'Girls Oversized Tshirt',
     price: 699.00,
     image: '/Girls Oversized tshirt.jpg',
     category: 'Womens',
@@ -68,6 +74,7 @@ export const products: Product[] = [
   },
   {
     id: 6,
+    tone: 'Energetic',
     name: 'Lufy Anime Oversized Tshirt',
     price: 699.00,
     image: '/Lufy Anime Oversized Tshirt.jpg',
@@ -77,6 +84,7 @@ export const products: Product[] = [
   },
   {
     id: 7,
+    tone: 'Mysterious',
     name: 'One Piece Oversized Tshirt',
     price: 699.00,
     image: [
@@ -89,6 +97,7 @@ export const products: Product[] = [
   },
   {
     id: 8,
+    tone: 'Mysterious',
     name: 'Pirated One Piece Oversized Tshirt',
     price: 899.00,
     image: [
@@ -100,6 +109,7 @@ export const products: Product[] = [
   },
   {
     id: 9,
+    tone: 'Mysterious',
     name: 'Pirated One Piece Oversized Tshirt',
     price: 799.00,
     image: [
@@ -110,6 +120,7 @@ export const products: Product[] = [
   },
   {
     id: 10,
+    tone: 'Mysterious',
     name: 'Oversized Tshirt',
     price: 899.00,
     image: [
@@ -120,6 +131,7 @@ export const products: Product[] = [
   },
   {
     id: 11,
+    tone: 'Mysterious',
     name: 'One piece oversized Tshirt',
     price: 699.00,
     image: [

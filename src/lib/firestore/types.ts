@@ -1,4 +1,4 @@
-export type OrderStatus = 'created' | 'paid' | 'failed';
+export type OrderStatus = 'created' | 'paid' | 'failed' | 'cod_pending';
 
 export interface OrderItem {
   id: number;
@@ -23,6 +23,7 @@ export interface OrderDoc {
     country: string;
   };
   status: OrderStatus;
+  paymentMethod?: 'online' | 'cod';
   paymentId?: string;
   createdAt: number; // epoch millis
 }
