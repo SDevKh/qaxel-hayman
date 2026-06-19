@@ -6,6 +6,8 @@ export interface CartItem {
   name: string;
   price: number;
   image: string;
+  size: string;
+  color: string;
   quantity: number;
 }
 
@@ -30,7 +32,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart(state, action: PayloadAction<Omit<CartItem, 'quantity'>>) {
-      const existing = state.items.find(i => i.id === action.payload.id);
+      const existing = state.items.find(i => i.id === action.payload.id && i.size === action.payload.size && i.color === action.payload.color);
       if (existing) {
         existing.quantity += 1;
       } else {
@@ -38,12 +40,12 @@ const cartSlice = createSlice({
       }
       localStorage.setItem('styledora_cart', JSON.stringify(state.items));
     },
-    removeFromCart(state, action: PayloadAction<number>) {
-      state.items = state.items.filter(i => i.id !== action.payload);
+    removeFromCart(state, action: PayloadAction<{ id: number; size: string; color: string }>) {
+      state.items = state.items.filter(i => !(i.id === action.payload.id && i.size === action.payload.size && i.color === action.payload.color));
       localStorage.setItem('styledora_cart', JSON.stringify(state.items));
     },
-    updateQuantity(state, action: PayloadAction<{ id: number; quantity: number }>) {
-      const item = state.items.find(i => i.id === action.payload.id);
+    updateQuantity(state, action: PayloadAction<{ id: number; size: string; color: string; quantity: number }>) {
+      const item = state.items.find(i => i.id === action.payload.id && i.size === action.payload.size && i.color === action.payload.color);
       if (item) item.quantity = action.payload.quantity;
       localStorage.setItem('styledora_cart', JSON.stringify(state.items));
     },

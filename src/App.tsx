@@ -8,6 +8,7 @@ import { auth } from './lib/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import Navbar from './components/Navbar';
 import CartDrawer from './components/CartDrawer';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
 import About from './pages/About';
@@ -123,6 +124,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <ScrollToTop />
         <AppLayout />
       </BrowserRouter>
     </Provider>

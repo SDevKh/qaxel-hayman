@@ -24,7 +24,9 @@ export default function ProductCard({ product }: { product: Product }) {
               id: product.id,
               name: product.name,
               price: product.price,
-              image: Array.isArray(product.image) ? product.image[0] : product.image
+              image: Array.isArray(product.image) ? product.image[0] : product.image,
+              size: product.size?.[0] || 'M',
+              color: product.color?.[0] || 'Black'
             }))}
           >
             Add to Bag

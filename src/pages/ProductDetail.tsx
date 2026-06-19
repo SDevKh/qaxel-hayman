@@ -11,6 +11,8 @@ export default function ProductDetail() {
   const product = products.find(p => p.id === Number(id));
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(product?.size?.[0] || '');
+  const [selectedColor, setSelectedColor] = useState(product?.color?.[0] || '');
 
   if (!product) {
     return (
@@ -32,8 +34,28 @@ export default function ProductDetail() {
     <div className="product-detail">
       <div className="detail-grid">
         <div className="detail-gallery">
-          <div className="detail-img-main">
+          <div className="detail-img-main" style={{ position: 'relative' }}>
             <img src={activeImage} alt={product.name} />
+            {images.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  className="gallery-nav-btn prev"
+                  onClick={() => setActiveImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  className="gallery-nav-btn next"
+                  onClick={() => setActiveImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </>
+            )}
           </div>
           {images.length > 1 && (
             <div className="detail-img-thumbs">
@@ -56,6 +78,44 @@ export default function ProductDetail() {
             <h1>{product.name}</h1>
             <p className="detail-price">Rs.{product.price.toFixed(2)}</p>
           </div>
+          {product.size && product.size.length > 0 && (
+            <div style={{ marginTop: '0.5rem', marginBottom: '0.5rem' }}>
+              <span className="size-selector-label">SELECT SIZE</span>
+              <div className="size-selector-options">
+                {product.size.map((sz) => (
+                  <button
+                    key={sz}
+                    type="button"
+                    className={`size-selector-btn ${selectedSize === sz ? 'active' : ''}`}
+                    onClick={() => setSelectedSize(sz)}
+                  >
+                    {sz}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {product.color && product.color.length > 0 && (
+            <div style={{ marginTop: '0.5rem', marginBottom: '0.5rem' }}>
+              <span className="color-selector-label">SELECT COLOR</span>
+              <div className="color-selector-options">
+                {product.color.map((clr) => (
+                  <button
+                    key={clr}
+                    type="button"
+                    className={`color-selector-btn ${selectedColor === clr ? 'active' : ''}`}
+                    style={{ backgroundColor: clr.toLowerCase() }}
+                    onClick={() => setSelectedColor(clr)}
+                    aria-label={clr}
+                  >
+
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
 
           <p className="detail-desc">{product.description}</p>
 
@@ -65,7 +125,9 @@ export default function ProductDetail() {
               id: product.id,
               name: product.name,
               price: product.price,
-              image: images[0]
+              image: images[0],
+              size: selectedSize,
+              color: selectedColor
             }))}
           >
             Add to Bag

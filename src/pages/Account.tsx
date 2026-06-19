@@ -163,7 +163,7 @@ const Account: React.FC = () => {
                     </div>
                     <div className="order-items-preview">
                       {order.items.map((item, idx) => (
-                        <img key={idx} src={item.image} alt={item.name} className="order-item-thumb" title={item.name} />
+                        <img key={idx} src={item.image} alt={item.name} className="order-item-thumb" title={`${item.name} (Size: ${item.size})`} />
                       ))}
                     </div>
 

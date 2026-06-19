@@ -262,12 +262,12 @@ export default function Checkout() {
                 />
               </div>
             </div>
-            
+
             {/* Payment Method Selector */}
             <div style={{ marginTop: '2.5rem', borderTop: '1px solid var(--border)', paddingTop: '2rem' }}>
               <h3 className="serif" style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Payment Method</h3>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1.25rem' }}>
-                <div 
+                <div
                   className={`payment-method-card ${paymentMethod === 'online' ? 'selected' : ''}`}
                   onClick={() => setPaymentMethod('online')}
                   style={{
@@ -298,7 +298,7 @@ export default function Checkout() {
                   <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Pay securely with Cards, UPI, or NetBanking.</p>
                 </div>
 
-                <div 
+                <div
                   className={`payment-method-card ${paymentMethod === 'cod' ? 'selected' : ''}`}
                   onClick={() => setPaymentMethod('cod')}
                   style={{
@@ -352,11 +352,12 @@ export default function Checkout() {
           <h3 className="serif">Order Summary</h3>
           <div className="checkout-items">
             {items.map((item) => (
-              <div key={item.id} className="checkout-item">
+              <div key={`${item.id}-${item.size}-${item.color}`} className="checkout-item">
                 <img src={item.image} alt={item.name} className="checkout-item-img" />
                 <div className="checkout-item-info">
                   <p className="checkout-item-name">{item.name}</p>
-                  <p className="checkout-item-qty">QTY: {item.quantity}</p>
+                  <p className="checkout-item-qty">SIZE: {item.size} | QTY: {item.quantity}</p>
+                  <p className='checkout-item-color'>COLOR: {item.color}</p>
                   <p className="checkout-item-price">Rs.{(item.price * item.quantity).toFixed(2)}</p>
                 </div>
               </div>
@@ -379,7 +380,7 @@ export default function Checkout() {
           </div>
         </section>
       </div>
-      
+
       {/* Custom Notification Modal */}
       {notification && (
         <div style={{
@@ -431,7 +432,7 @@ export default function Checkout() {
             }}>
               {notification.type === 'success' ? '✓' : notification.type === 'error' ? '✕' : '!'}
             </div>
-            
+
             <h2 className="serif" style={{ fontSize: '2rem', marginBottom: '1rem', color: 'var(--text)' }}>
               {notification.title}
             </h2>
