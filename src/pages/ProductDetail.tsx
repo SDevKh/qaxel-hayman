@@ -1,14 +1,21 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { products } from '../data/products';
+import { useState, useEffect } from 'react';
+import { products, getProductBySlugOrId, getProductSlug } from '../data/products';
 import { addToCart } from '../store/cartSlice';
 import ProductCard from '../components/ProductCard';
 
 export default function ProductDetail() {
-  const { id } = useParams();
+  const { idOrSlug } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const product = products.find(p => p.id === Number(id));
+  const product = getProductBySlugOrId(idOrSlug);
+
+  useEffect(() => {
+    if (product && idOrSlug && !isNaN(Number(idOrSlug))) {
+      navigate(`/product/${getProductSlug(product)}`, { replace: true });
+    }
+  }, [product, idOrSlug, navigate]);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState(product?.size?.[0] || '');

@@ -133,7 +133,7 @@ Perfect for: Anime lovers, Dragon Ball fans, casual streetwear, and everyday com
     price: 590.0,
     size: ['M', 'L', 'XL', 'XXL'],
     image: ['/Anime Girls overszied.jpg'],
-    color: ['Black', 'White', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Gray'],
+    color: ['Black'],
     category: 'Womens',
     description: `Make a bold statement with this stylish Anime Girls Oversized T-Shirt, designed for those who love Japanese aesthetics and effortless streetwear. Featuring a vibrant high-definition anime artwork on the front, this tee combines comfort and style in one eye-catching piece.
 Crafted from a premium cotton blend, the oversized silhouette provides a relaxed fit and breathable feel, making it perfect for everyday wear. Whether you're heading out with friends, exploring the city, or expressing your love for anime culture, this tee delivers both comfort and personality.
@@ -154,7 +154,7 @@ Perfect for: Anime enthusiasts, casual streetwear lovers, everyday outfits, and 
     name: 'Demon Slayer Jacket',
     price: 1499.0,
     size: ['M', 'L', 'XL', 'XXL'],
-    color: ['Black', 'White', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Gray'],
+    color: [],
     image: ['/Demon Slayer Jacket.jpg'],
     category: 'Unisex',
     description: `Channel the spirit of the Demon Slayer Corps with this stylish Demon Slayer Inspired Jacket, featuring the iconic green and black checkered pattern made famous by Tanjiro Kamado. Designed for anime fans and streetwear enthusiasts alike, this statement piece blends Japanese aesthetics with everyday comfort.
@@ -181,7 +181,7 @@ Perfect for: Anime enthusiasts, Demon Slayer fans, cosplay-inspired outfits, cas
     price: 599.0,
     size: ['M', 'L', 'XL', 'XXL'],
     image: ['/Girl Oversized Tshirt.jpg'],
-    color: ['Black', 'White', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Gray'],
+    color: ['Green'],
     category: 'Womens',
     description: 'Breathable, high-quality cotton shirt for effortless summer style.',
     badge: 'Sustainable',
@@ -194,7 +194,7 @@ Perfect for: Anime enthusiasts, Demon Slayer fans, cosplay-inspired outfits, cas
     price: 699.0,
     size: ['M', 'L', 'XL', 'XXL'],
     image: '/Girls Oversized tshirt.jpg',
-    color: ['Black', 'White', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Gray'],
+    color: ['Pink'],
     category: 'Womens',
     description: `Soft pastel tones meet anime-inspired art in this relaxed oversized tee. Made from premium cotton blend for everyday comfort and effortless style.
 
@@ -212,7 +212,7 @@ Perfect for: Anime enthusiasts, Demon Slayer fans, cosplay-inspired outfits, cas
     name: 'Lufy Anime Oversized Tshirt',
     price: 699.0,
     size: ['M', 'L', 'XL', 'XXL'],
-    color: ['Black', 'White', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Gray'],
+    color: ['White', 'Beige'],
     image: '/Lufy Anime Oversized Tshirt.jpg',
     category: 'Men',
     description: `Set sail in style with this One Piece-inspired oversized tee featuring Luffy's iconic Wanted poster design. Made from a soft premium cotton blend for all-day comfort and a relaxed streetwear look.
@@ -232,7 +232,7 @@ Perfect for: Anime enthusiasts, Demon Slayer fans, cosplay-inspired outfits, cas
     name: 'One Piece Oversized Tshirt',
     price: 699.0,
     size: ['M', 'L', 'XL', 'XXL'],
-    color: ['Black', 'White', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Gray'],
+    color: ['Black', 'White', 'Beige'],
     image: ['/one piece oversized tshirt.jpg', '/One Piece Ovesized Tshirt.jpg'],
     category: 'Mens',
     description: `Show your pirate spirit with this One Piece-inspired oversized tee featuring an epic back print. Crafted from a premium cotton blend, it delivers all-day comfort with a bold streetwear vibe.
@@ -252,7 +252,7 @@ Perfect for: Anime enthusiasts, Demon Slayer fans, cosplay-inspired outfits, cas
     name: 'Pirated One Piece Oversized Tshirt',
     price: 899.0,
     size: ['M', 'L', 'XL', 'XXL'],
-    color: ['Black', 'White', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Gray'],
+    color: ['White'],
     image: ['/Pirated One Piece Oversized Tshirt.jpg', '/frontlufi.png'],
     category: 'Mens',
     description: `Unleash Gear 5 energy with this premium oversized tee featuring an epic Luffy back print. Designed for comfort and bold streetwear style, it's a must-have for every One Piece fan.
@@ -271,7 +271,7 @@ Perfect for: Anime enthusiasts, Demon Slayer fans, cosplay-inspired outfits, cas
     name: 'Pirated One Piece Oversized Tshirt',
     price: 799.0,
     size: ['M', 'L', 'XL', 'XXL'],
-    color: ['Black', 'White', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Gray'],
+    color: ['White', 'Beige'],
     image: ['/Pirated One Piece Oversized Tshirt (2).jpg'],
     category: 'Mens',
     description: `Unleash Gear 5 energy with this premium oversized tee featuring an epic Luffy back print. Designed for comfort and bold streetwear style, it's a must-have for every One Piece fan.
@@ -290,7 +290,7 @@ Perfect for: Anime enthusiasts, Demon Slayer fans, cosplay-inspired outfits, cas
     name: 'One Piece Ukiyo-E Oversized T-Shirt',
     price: 899.0,
     size: ['M', 'L', 'XL', 'XXL'],
-    color: ['Black', 'White', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Gray'],
+    color: ['Black', 'Beige'],
     image: ['/Pirated One Piece Oversized Tshirt (1).jpg'],
     category: 'Mens',
     description: `One Piece Ukiyo-E Oversized T-Shirt
@@ -311,7 +311,7 @@ Inspired by Japanese art and the Grand Line, this oversized tee features an excl
     name: 'One Piece Sunset Oversized T-Shirt',
     price: 699.0,
     size: ['M', 'L', 'XL', 'XXL'],
-    color: ['Black', 'White', 'Red', 'Green', 'Blue', 'Yellow', 'Purple', 'Orange', 'Pink', 'Brown', 'Gray'],
+    color: ['White', 'Beige'],
     image: ['/One piece oversized Tshirt (1).jpg'],
     category: 'Mens',
     description: `One Piece Sunset Oversized T-Shirt
@@ -329,4 +329,28 @@ Sail into the sunset with this premium oversized tee featuring Luffy and the Tho
 ];
 
 export const categories = ['All', 'Mens', 'Womens', 'Unisex'];
+
+export const getProductSlug = (product: Product): string => {
+  if (product.id === 9) {
+    return 'pirated-one-piece-oversized-tshirt-v2';
+  }
+  return product.name
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/[\s_]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+/, '')
+    .replace(/-+$/, '');
+};
+
+export const getProductBySlugOrId = (slugOrId: string | undefined): Product | undefined => {
+  if (!slugOrId) return undefined;
+  const idNum = Number(slugOrId);
+  if (!isNaN(idNum)) {
+    return products.find(p => p.id === idNum);
+  }
+  return products.find(p => getProductSlug(p) === slugOrId);
+};
+
 
