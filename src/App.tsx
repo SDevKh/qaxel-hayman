@@ -20,6 +20,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Account from './pages/Account';
 import NotFound from './pages/NotFound';
+import { Analytics } from "@vercel/analytics/react"
 
 function AppLayout() {
   const dispatch = useDispatch();
@@ -113,6 +114,7 @@ function AppLayout() {
       </footer>
 
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
+      <Analytics />
     </div>
   );
 }
