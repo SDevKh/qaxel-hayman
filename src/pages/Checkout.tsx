@@ -49,7 +49,7 @@ export default function Checkout() {
   const [fullName, setFullName] = useState(user?.fullName || '');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
-  const [country, setCountry] = useState('');
+  const [country] = useState('India');
   const [paymentMethod, setPaymentMethod] = useState<'online' | 'cod'>('online');
   const [notification, setNotification] = useState<{
     title: string;
@@ -258,7 +258,8 @@ export default function Checkout() {
                   type="text"
                   className="auth-input"
                   value={country}
-                  onChange={(e) => setCountry(e.target.value)}
+                  disabled
+                  style={{ opacity: 0.7, cursor: 'not-allowed' }}
                 />
               </div>
             </div>
