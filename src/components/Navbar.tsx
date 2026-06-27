@@ -37,6 +37,7 @@ export default function Navbar({ onCartOpen }: NavbarProps) {
         <div className="navbar-links">
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Collection</Link>
           <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>The Brand</Link>
+          <Link to="/journal" className={location.pathname.startsWith('/journal') ? 'active' : ''}>Journal</Link>
           <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link>
         </div>
 
@@ -71,6 +72,7 @@ export default function Navbar({ onCartOpen }: NavbarProps) {
           <div style={{ margin: '1rem 0', height: '1px', background: 'var(--border)' }} />
           <Link to="/" className={location.pathname === '/' ? 'active' : ''} onClick={closeMobileMenu}>Collection</Link>
           <Link to="/about" className={location.pathname === '/about' ? 'active' : ''} onClick={closeMobileMenu}>The Brand</Link>
+          <Link to="/journal" className={location.pathname.startsWith('/journal') ? 'active' : ''} onClick={closeMobileMenu}>Journal</Link>
           <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''} onClick={closeMobileMenu}>Contact</Link>
           <div style={{ margin: '1rem 0', height: '1px', background: 'var(--border)' }} />
           <Link to="/shipping" onClick={closeMobileMenu}>Shipping & Returns</Link>

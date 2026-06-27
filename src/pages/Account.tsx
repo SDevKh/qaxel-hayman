@@ -128,9 +128,14 @@ const Account: React.FC = () => {
                 <label className="auth-label">EMAIL ADDRESS</label>
                 <p style={{ fontSize: '1.1rem', color: 'var(--text)', fontWeight: 500 }}>{user.email}</p>
               </div>
-              <button className="auth-submit" style={{ width: 'auto', padding: '0.8rem 2rem', fontSize: '0.7rem' }}>
-                EDIT PROFILE
-              </button>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <button className="auth-submit" style={{ width: 'auto', padding: '0.8rem 2rem', fontSize: '0.7rem' }}>
+                  EDIT PROFILE
+                </button>
+                <Link to="/journal/admin" className="admin-btn" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', padding: '0.8rem 2rem' }}>
+                  MANAGE JOURNAL
+                </Link>
+              </div>
             </div>
           </section>
 

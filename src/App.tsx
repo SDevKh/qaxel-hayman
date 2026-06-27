@@ -20,6 +20,9 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Account from './pages/Account';
 import NotFound from './pages/NotFound';
+import BlogList from './pages/BlogList';
+import BlogDetail from './pages/BlogDetail';
+import BlogAdmin from './pages/BlogAdmin';
 import { Analytics } from "@vercel/analytics/react"
 
 function AppLayout() {
@@ -67,6 +70,9 @@ function AppLayout() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/journal" element={<BlogList />} />
+          <Route path="/journal/admin" element={<BlogAdmin />} />
+          <Route path="/journal/:id" element={<BlogDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
@@ -103,7 +109,7 @@ function AppLayout() {
             <div className="footer-nav footer-links">
               <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
               <a href="#" target="_blank" rel="noopener noreferrer">Pinterest</a>
-              <a href="#" target="_blank" rel="noopener noreferrer">Journal</a>
+              <Link to="/journal">Journal</Link>
             </div>
           </div>
         </div>
