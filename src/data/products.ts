@@ -326,7 +326,29 @@ Sail into the sunset with this premium oversized tee featuring Luffy and the Tho
 🏴‍☠️ Ideal for One Piece fans and casual streetwear`,
     reviews: seededReviews('oversized-2', 11),
   },
+  {
+    id: 12,
+    tone: 'Lufy',
+    name: 'Lufy One Piece Oversized T-Shirt',
+    price: 799.0,
+    size: ['M', 'L', 'XL', 'XXL'],
+    color: ['White', 'Beige'],
+    image: ['/image.png'],
+    category: 'Mens',
+    description: `Lufy One Piece Oversized T-Shirt
+
+Sail into the sunset with this premium oversized tee featuring Luffy and the Thousand Sunny in a stunning silhouette design. Made for comfort and everyday style.
+
+🌅 Epic Luffy sunset artwork
+👕 Relaxed oversized fit
+☁️ Soft & breathable fabric
+🎨 Long-lasting premium print
+🧼 Machine washable
+🏴‍☠️ Ideal for One Piece fans and casual streetwear`,
+    reviews: seededReviews('oversized-2', 11),
+  },
 ];
+
 
 export const categories = ['All', 'Mens', 'Womens', 'Unisex'];
 
