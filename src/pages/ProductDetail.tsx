@@ -6,7 +6,7 @@ import { addToCart } from '../store/cartSlice';
 import ProductCard from '../components/ProductCard';
 
 export default function ProductDetail() {
-  const { idOrSlug } = useParams();
+  const { id: idOrSlug } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const product = getProductBySlugOrId(idOrSlug);
